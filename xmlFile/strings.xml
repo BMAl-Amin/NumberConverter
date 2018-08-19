@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Number Converter</string>
+    <string name="system_name">Number System</string>
+    <string-array name="system_type">
+        <item>Decimal Number</item>
+        <item>Binary Number</item>
+        <item>Octal Number</item>
+        <item>Hexadecimal Number</item>
+    </string-array>
+</resources>
