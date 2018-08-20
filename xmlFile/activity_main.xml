@@ -4,14 +4,6 @@
     android:layout_height="match_parent"
     android:layout_gravity="center"
     android:orientation="vertical">
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Number System Converter"
-        android:textAlignment="center"
-        android:textSize="25dp"
-        android:textColor="#00042e"
-        android:textStyle="bold"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -23,6 +15,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="6dp"
+            android:textAlignment="textEnd"
+            android:layout_gravity="end"
             android:background="#00042e"
             android:fontFamily="casual"
             android:textSize="25sp"

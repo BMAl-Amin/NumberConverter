@@ -1,7 +1,11 @@
 package com.example.alamin.numberconverter;
 
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.style.ForegroundColorSpan;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,7 +18,9 @@ public class MainActivity extends AppCompatActivity {
     private Button oNe, tWo, tHree, fOur, fIve, sIx, sEven, eIght, nIne, zEro, backSpace, convertBtn;
     private Spinner inputSpnr, resultSpnr;
     private int inNumType, outNumType;
-    private String inputNumber;
+    private String inputNumber, outputSentence;
+    SpannableString outColoredSentence;
+    ForegroundColorSpan outColorA, outColorB;
     private NumberConvertService numberConvertService;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -112,7 +118,8 @@ public class MainActivity extends AppCompatActivity {
         backSpace.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                inputNumber=editText.getText().toString();
+                editText.setText(inputNumber.substring(0, inputNumber.length()-1));
             }
         });
         convertBtn.setOnClickListener(new View.OnClickListener() {
@@ -121,7 +128,13 @@ public class MainActivity extends AppCompatActivity {
                 inNumType= inputSpnr.getSelectedItemPosition();
                 outNumType= resultSpnr.getSelectedItemPosition();
                 inputNumber=editText.getText().toString();
-                textView.setText(numberConvertService.convertNumber(inputNumber, inNumType, outNumType));
+                outputSentence= numberConvertService.convertNumber(inputNumber, inNumType, outNumType);
+                outColoredSentence= new SpannableString(outputSentence);
+                outColorA= new ForegroundColorSpan(Color.RED);
+                outColorB= new ForegroundColorSpan(Color.GREEN);
+                outColoredSentence.setSpan(outColorA, 0, inputNumber.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                outColoredSentence.setSpan(outColorB, outputSentence.indexOf("is")+2, outputSentence.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                textView.setText(outColoredSentence);
             }
         });
     }

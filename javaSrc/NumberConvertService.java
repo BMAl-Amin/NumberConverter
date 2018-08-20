@@ -113,12 +113,6 @@ public class NumberConvertService {
                 }
             }
         }
-        SpannableString inNumber=new SpannableString(inputNumber);
-        SpannableString outNumber= new SpannableString(result);
-        ForegroundColorSpan inColor= new ForegroundColorSpan(Color.RED);
-        ForegroundColorSpan outColor= new ForegroundColorSpan(Color.GREEN);
-        inNumber.setSpan(inColor, 0, inputNumber.length()-1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-        outNumber.setSpan(outColor, 0, result.length()-1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-        return inNumber+"\'s "+ numberType+" "+outNumber;
+        return inputNumber+"\'s "+ numberType+" "+result.toUpperCase();
     }
 }
